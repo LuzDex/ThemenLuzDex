@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Color definitions
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+WHITE='\033[0;37m'
+NC='\033[0m' # No Color
+
+# Function to create the banner
+create_banner() {
+  echo -e "${CYAN}========================================${NC}"
+  echo -e "${GREEN} WELCOME TO KALI LINUX ${NC}"
+  echo -e "${CYAN}========================================${NC}"
+}
+
+# Menu to choose text color
+choose_color() {
+  echo "Choose a text color:"
+  echo -e "1) ${RED}Red${NC}"
+  echo -e "2) ${GREEN}Green${NC}"
+  echo -e "3) ${YELLOW}Yellow${NC}"
+  echo -e "4) ${BLUE}Blue${NC}"
+  echo -e "5) ${PURPLE}Purple${NC}"
+  echo -e "6) ${CYAN}Cyan${NC}"
+  echo -e "7) ${WHITE}White${NC}"
+
+  read -p "Enter a number: " color_choice
+
+  case $color_choice in
+    1) chosen_color=$RED ;;
+    2) chosen_color=$GREEN ;;
+    3) chosen_color=$YELLOW ;;
+    4) chosen_color=$BLUE ;;
+    5) chosen_color=$PURPLE ;;
+    6) chosen_color=$CYAN ;;
+    7) chosen_color=$WHITE ;;
+    *) echo "Invalid choice, default color will be used." ; chosen_color=$NC ;;
+  esac
+}
+
+# Function to customize the banner
+custom_banner() {
+  read -p "Enter your banner text: " banner_text
+  echo -e "${chosen_color}$banner_text${NC}"
+}
+
+# Main program
+clear
+create_banner
+choose_color
+custom_banner
